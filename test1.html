@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            position: relative;
+            background-color: rgba(0,0,0,.2);
+        }
+        .mask{
+            height: 200px;
+            width: 100%;
+            background-color: pink;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="mask"></div>
+    </div>
+    <script>
+        $(function () {
+            $(".box").hover(function () {
+                $(".mask").slideDown("ease-in",200);
+            }, function () {
+                $(".mask").slideUp("ease-in",200);
+            })
+        })
+    </script>
+</body>
+</html>

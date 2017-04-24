@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="product.js"></script>
+    <script src="cart.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .oldprice{
+            color:red;
+        }
+        .item{
+            width: 22%;
+            text-align: center;
+            border: 1px solid black;
+            box-shadow: 0 0 5px 5px rgba(0,0,0,.4);
+            float: left;
+            overflow: hidden;
+        }
+        .item img{
+            width: 150px;
+            height: 150px;
+        }
+        .item +.item{
+            margin-left: 4%;
+        }
+        .item button{
+            width: 120px;
+            height: 40px;
+            background-color: blue;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            color: #fff;
+        }
+        .shopCart{
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            box-shadow: 0 0 3px 3px rgba(0,0,0,.3);
+            border: 1px solid;
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            display: none;
+        }
+        .mask{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.4);
+            z-index: 50;
+            display: none;
+        }
+        .product-list img{
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+        .shopCart .hostprice{
+            float: right;
+            line-height: 50px;
+        }
+        .allprice{
+            position: absolute;
+            right: 25px;
+            bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mask"></div>
+     <div class="container">
+     </div>
+    <div class="shopCart">
+        <p class="amount">产品数量：</p>
+        <ul class="product-list">
+            <li>
+                <img src="images/s6.jpg" alt="">
+                <span>发生</span>
+                <span class="hostprice">$44</span>
+            </li>
+        </ul>
+        <p class="allprice">总价格：</p>
+    </div>
+
+    <script>
+        var json = {
+            p1:{ img:"images/s6.jpg",
+                des:"事实上冯绍峰",
+                oldprice:"￥222",
+                host:"99"},
+            p2:{ img:"images/s6.jpg",
+                des:"事实上冯绍峰",
+                oldprice:"￥222",
+                host:"99"},
+            p3:{ img:"images/s6.jpg",
+                des:"事实上冯绍峰",
+                oldprice:"￥222",
+                host:"99"},
+            p4:{ img:"images/s6.jpg",
+                des:"事实上冯绍峰",
+                oldprice:"￥222",
+                host:"89"}
+        }
+        var bindBtn = null;
+//        var cart = new Cart();
+       for(var i in json){
+           var p1 = new Product({
+               img:json[i].img,
+               des:json[i].des,
+               oldprice:json[i].oldprice,
+               host:json[i].host
+           });
+           p1.bindDom();
+           bindBtn = p1;
+       }
+
+        bindBtn.bindEvent();
+
+    </script>
+
+</body>
+</html>
